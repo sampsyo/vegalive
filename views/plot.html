@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/jquery.js"></script>
+<script>
+var socket = io.connect('/');
+socket.on('connect', function () {
+    var pathParts = window.location.pathname.split('/');
+    var filename = pathParts[pathParts.length - 1];
+    socket.emit('watch', { filename: filename });
+});
+socket.on('change', function (data) {
+    $('#log').append(data.filename + ' changed<br>');
+});
+socket.on('status', function (data) {
+    $('#log').append(data.message + '<br>');
+});
+</script>
+</head>
+<body>
+Welcome.
+<div id="log"></div>
+</body>
+</html>

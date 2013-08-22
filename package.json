@@ -1,0 +1,10 @@
+{
+    "name": "vegalive",
+    "description": "live data visualization",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "socket.io": "0.9.16",
+        "express": "3.3.5"
+    }
+}
