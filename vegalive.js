@@ -20,6 +20,8 @@ app.get('/plot/:filename', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
+    var watcher = null;
+
     socket.on('watch', function (data) {
         var filename = data.filename;
         fs.exists(filename, function (exists) {
@@ -29,9 +31,8 @@ io.sockets.on('connection', function (socket) {
                 // non-polling (fs.watch) backend seems unstable. On my
                 // machine, it was "losing track" of the file after a few
                 // updates. (That's true of using fs.watch directly, too.)
-                var watcher = chokidar.watch(filename);
+                watcher = chokidar.watch(filename);
                 watcher.on('change', function (path) {
-                    console.log('watcher change ' + path);
                     socket.emit('change', { filename: filename });
                 });
                 watcher.on('error', function (error) {
@@ -42,5 +43,11 @@ io.sockets.on('connection', function (socket) {
                 socket.emit('error', { 'message': 'no such file' });
             }
         });
+    });
+
+    socket.on('disconnect', function () {
+        if (watcher !== null) {
+            watcher.close();
+        }
     });
 });
