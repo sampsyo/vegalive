@@ -3,16 +3,41 @@ var http = require('http');
 var socketio = require('socket.io');
 var fs = require('fs');
 var chokidar = require('chokidar');
+var consolidate = require('consolidate');
 
 var app = express();
 var server = http.createServer(app);
 var io = socketio.listen(server);
 
-app.use('/file', express.static(process.cwd()));
+var basedir = process.cwd();
+app.use('/file', express.static(basedir));
+app.set('views', __dirname + '/views');
+app.engine('mustache', consolidate.hogan);
 server.listen(4915);
 
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/views/index.html');
+    res.status(200);
+    fs.readdir(basedir, function (err, files) {
+        res.render('index.mustache', {
+            files: files.filter(function (file) {
+                return endsWith(file, '.json');
+            })
+        });
+        /*
+        var out = '<ul>';
+        files.forEach(function (file) {
+            if (endsWith(file, '.json')) {
+                out += '<li><a href="/plot/' + file + '>' + file + '</a></li>';
+            }
+        });
+        out += '</ul>';
+        res.end(out);
+        */
+    });
 });
 
 app.get('/plot/:filename', function (req, res) {
