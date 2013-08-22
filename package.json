@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "socket.io": "0.9.16",
-        "express": "3.3.5"
+        "express": "3.3.5",
+        "chokidar": "0.6.3"
     }
 }
