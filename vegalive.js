@@ -7,7 +7,7 @@ var app = express();
 var server = http.createServer(app);
 var io = socketio.listen(server);
 
-app.use('/static', express.static(__dirname + '/static'));
+app.use('/file', express.static(process.cwd()));
 server.listen(4915);
 
 app.get('/', function (req, res) {
@@ -23,12 +23,12 @@ io.sockets.on('connection', function (socket) {
         var filename = data.filename;
         fs.exists(filename, function (exists) {
             if (exists) {
-                socket.emit('status', { 'message': 'watching file' });
+                socket.emit('ready', { 'message': 'watching file' });
                 fs.watch(filename, function (e, f) {
-                    socket.emit('change', { 'filename': filename });
+                    socket.emit('change', { filename: filename });
                 });
             } else {
-                socket.emit('status', { 'message': 'no such file' });
+                socket.emit('error', { 'message': 'no such file' });
             }
         });
     });
