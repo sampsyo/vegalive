@@ -27,16 +27,6 @@ app.get('/', function (req, res) {
                 return endsWith(file, '.json');
             })
         });
-        /*
-        var out = '<ul>';
-        files.forEach(function (file) {
-            if (endsWith(file, '.json')) {
-                out += '<li><a href="/plot/' + file + '>' + file + '</a></li>';
-            }
-        });
-        out += '</ul>';
-        res.end(out);
-        */
     });
 });
 
