@@ -1,14 +1,23 @@
 {
-    "name": "vegalive",
-    "description": "live data visualization",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "socket.io": "0.9.16",
-        "express": "3.3.5",
-        "chokidar": "0.6.3",
-        "consolidate": "0.9.1",
-        "hogan.js": "2.0.0"
-    },
-    "bin": "vegalive.js"
+  "name": "vegalive",
+  "description": "live data visualization",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sampsyo/vegalive"
+  },
+  "dependencies": {
+    "socket.io": "0.9.16",
+    "express": "3.3.5",
+    "chokidar": "0.6.3",
+    "consolidate": "0.9.1",
+    "hogan.js": "2.0.0"
+  },
+  "bin": {
+    "vegalive": "cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js"
+  }
 }
