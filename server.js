@@ -13,7 +13,8 @@ function endsWith(str, suffix) {
 module.exports = function (port) {
   var app = express();
   var server = http.createServer(app);
-  var io = socketio.listen(server);
+  var io = socketio.listen(server,
+                           { 'log level': 1 });  // warnings
 
   var basedir = process.cwd();
   app.use('/file', express.static(basedir));
@@ -21,6 +22,8 @@ module.exports = function (port) {
   app.set('views', __dirname + '/views');
   app.engine('mustache', hogan_express);
   server.listen(port);
+  
+  console.log('http://localhost:' + port);
 
   app.get('/', function (req, res) {
     res.status(200);
