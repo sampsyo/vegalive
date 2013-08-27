@@ -25,7 +25,7 @@ socket.on('change', function (data) {
 
 socket.on('error', function (data) {
   console.log('error: ' + data.message);
-  $('#log').append(data.message + '<br>');
+  d3.select('#log').append('p').text(data.message);
 });
 
 socket.on('ready', function (data) {
