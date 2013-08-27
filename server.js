@@ -4,6 +4,7 @@ var socketio = require('socket.io');
 var fs = require('fs');
 var chokidar = require('chokidar');
 var consolidate = require('consolidate');
+var hogan_express = require('hogan-express');
 
 module.exports = function (port) {
   var app = express();
@@ -13,7 +14,7 @@ module.exports = function (port) {
   var basedir = process.cwd();
   app.use('/file', express.static(basedir));
   app.set('views', __dirname + '/views');
-  app.engine('mustache', consolidate.hogan);
+  app.engine('mustache', hogan_express);
   server.listen(port);
 
   function endsWith(str, suffix) {
