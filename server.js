@@ -3,7 +3,6 @@ var http = require('http');
 var socketio = require('socket.io');
 var fs = require('fs');
 var chokidar = require('chokidar');
-var consolidate = require('consolidate');
 var hogan_express = require('hogan-express');
 
 function endsWith(str, suffix) {

@@ -2,7 +2,8 @@
   "name": "vegalive",
   "description": "live data visualization",
   "version": "0.0.1",
-  "private": true,
+  "author": "Adrian Sampson <adrian@radbox.org>",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sampsyo/vegalive"
