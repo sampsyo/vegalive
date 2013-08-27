@@ -13,6 +13,7 @@ module.exports = function (port) {
 
   var basedir = process.cwd();
   app.use('/file', express.static(basedir));
+  app.use('/static', express.static(__dirname + '/static'));
   app.set('views', __dirname + '/views');
   app.engine('mustache', hogan_express);
   server.listen(port);
