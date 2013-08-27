@@ -6,6 +6,10 @@ var chokidar = require('chokidar');
 var consolidate = require('consolidate');
 var hogan_express = require('hogan-express');
 
+function endsWith(str, suffix) {
+  return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
 module.exports = function (port) {
   var app = express();
   var server = http.createServer(app);
@@ -17,10 +21,6 @@ module.exports = function (port) {
   app.set('views', __dirname + '/views');
   app.engine('mustache', hogan_express);
   server.listen(port);
-
-  function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-  }
 
   app.get('/', function (req, res) {
     res.status(200);
