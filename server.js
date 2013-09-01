@@ -36,7 +36,9 @@ module.exports = function (port) {
   });
 
   app.get('/plot/:filename', function (req, res) {
-    res.sendfile(__dirname + '/views/plot.html');
+    res.render('plot.mustache', {
+      title: req.params.filename
+    });
   });
 
   io.sockets.on('connection', function (socket) {

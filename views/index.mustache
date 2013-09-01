@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>vegalive</title>
+    <title>Vegalive</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-choose a plot:
-<ul>
-{{#files}}
-<li><a href="/plot/{{.}}">{{.}}</a></li>
-{{/files}}
-</ul>
+    <div class="container">
+        <h1>Plots</h1>
+        <ul>
+            {{#files}}
+            <li><a href="/plot/{{.}}">{{.}}</a></li>
+            {{/files}}
+        </ul>
+    </div>
 </body>
 </html>
