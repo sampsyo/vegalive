@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Vegalive by sampsyo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Vegalive</h1>
+        <p>live preview of Vega visualizations</p>
+
+        <p class="view"><a href="https://github.com/sampsyo/vegalive">View the Project on GitHub <small>sampsyo/vegalive</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sampsyo/vegalive/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sampsyo/vegalive/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sampsyo/vegalive">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="http://trifacta.github.io/vega/">Vega</a> is a declarative language for making data visualizations. It's bona fide awesome. Check it out.</p>
+
+<p>This is a tiny tool for quickly viewing Vega visualizations, complete with live updates. You can live-code your visualization in your favorite editor. Or you can automatically see updates as new points are added to a data file---so you can watch an experiment progress in real time.</p>
+
+
+
+<p>Vegalive is written for <a href="http://nodejs.org/">Node.js</a>, so it's installed with <a href="https://npmjs.org/">npm</a>. Just type:</p>
+
+<pre><code>$ npm install -g vegalive
+</code></pre>
+
+<p>Then, go to a directory that has one of your Vega specs (i.e., .json files) and type:</p>
+
+<pre><code>$ vegalive
+</code></pre>
+
+<p>As the output suggests, you'll then want to point your browser at <a href="http://localhost:4915">http://localhost:4915</a>. There you'll see a list of JSON documents in the current directory. Click on your plot's filename to see it rendered in glorious HTML5.</p>
+
+<p>Then the magic happens:</p>
+
+<ul>
+<li><p>Edit the spec in your favorite editor. Whenever you save, the plot refreshes in your browser.</p></li>
+<li><p>Edit the data files that your visualization uses (or have another tool update them). The plot refreshes automatically.</p></li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sampsyo">sampsyo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
