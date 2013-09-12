@@ -62,6 +62,11 @@ function updatePlot() {
     // FIXME unwatch removed files?
     dataFiles = newDataFiles;
 
+    // Update the plot title.
+    if (json.name) {
+        d3.select('#plottitle').text(json.name);
+    }
+
     // Display the new plot.
     vg.parse.spec(json, function (chart) {
       chart({ el: '#vis' }).update();
